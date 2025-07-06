@@ -2,27 +2,6 @@
 <html lang="{{ .Site.Language }}">
     <head>
         {{ partial "head.html" . }}
-        
-        {{ if site.Params.vercel_analytics.enable }}
-        <!-- Vercel Analytics -->
-        <script>
-            window.va = window.va || function () {
-            (window.vaq = window.vaq || []).push(arguments);
-            };
-        </script>
-        <script defer src="/_vercel/insights/script.js"></script>
-        {{ end }}
-
-        {{ if site.Params.vercel_speed_insights.enable }}
-        <!-- Vercel Speed Insights -->
-        <script>
-            window.si = window.si || function () {
-            (window.siq = window.siq || []).push(arguments);
-            };
-        </script>
-        <script defer src="/_vercel/speed-insights/script.js"></script>
-        {{ end }}
-
     </head>
 
     {{ block "body" . }}
@@ -42,5 +21,17 @@
         </div>
 
         {{ partial "javascript.html" . }}
+
+        <!-- Vercel Speed Insights -->
+        <script>
+            window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+        </script>
+        <script defer src="/_vercel/speed-insights/script.js"></script>
+
+        <!-- Vercel Analytics -->
+        <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+        </script>
+        <script defer src="/_vercel/insights/script.js"></script>
     </body>
 </html>
